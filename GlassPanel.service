@@ -1,0 +1,16 @@
+[Unit]
+Description=Get Node.js EFIS server service running at boot
+After=CAN_Listener.service
+
+[Service]
+User=pi
+Group=pi
+WorkingDirectory=/home/pi/labs/GlassPanel
+ExecStart=node webserver.js
+Restart=always
+StandardOutput=syslog
+StandardError=syslog
+SyslogIdentifier=GlassPanel
+
+[Install]
+WantedBy=multi-user.target
