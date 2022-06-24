@@ -5,7 +5,7 @@ After=CAN_Listener.service
 [Service]
 User=pi
 Group=pi
-WorkingDirectory=/home/pi/labs/GlassPanel
+WorkingDirectory=/home/pi/GlassPanel
 ExecStart=node webserver.js
 Restart=always
 StandardOutput=syslog
