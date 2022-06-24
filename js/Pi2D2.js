@@ -41,7 +41,7 @@ var Pi2D2 =  {
       vertspeed: {x: 430, y: 160 },
 //**********  EMS Stuff **********************************************************
       rpm: {x: 20, y: 410, r: 70}, // x,y - position, r - radius of the round gauge, s - width of the line
-      FuelFlow: {x: 55, y: 500 },
+      FuelFlow: {x: 55, y:280 },
       FuelPressure: {x: 55, y: 545 },
       FuelTank1: {x: 0, y: 560, BarSize: 120 },
       OilPressure: {x: 200, y: 345 },
@@ -117,58 +117,58 @@ var Pi2D2 =  {
       svg = Snap('#Pi2D2_SVG');
       this.pitch = this.pitch();
       this.roll = this.roll();
-      this.compass = this.compass();
-      this.headingBug = this.headingBug();
+      // this.compass = this.compass();
+      // this.headingBug = this.headingBug();
       this.speed = this.speed();
       this.altitude = this.altitude();
       this.altimeter = this.altimeter();
 //      this.gmeter = this.gmeter();
-      this.vertspeed = this.vertspeed();
+      // this.vertspeed = this.vertspeed();
 //      this.cdi = this.cdi();
 //      this.glideslope = this.glideslope();
 //      this.altitudeBug = this.altitudeBug();
-      this.slip = this.slipIndicator();
-      this.turn = this.turnIndicator();
+//      this.slip = this.slipIndicator();
+      // this.turn = this.turnIndicator();
 
 // hide the bottom part of the compass and create blan fiels for EMS gauges
-     svg.rect(0, s.screen.y ,s.screen.x, s.screen.y).attr( {fill: '#000000'});
+    //  svg.rect(0, s.screen.y ,s.screen.x, s.screen.y).attr( {fill: '#000000'});
 
-     this.rpm = this.rpm();
-     this.FuelFlow = this.FuelFlow();
-     this.FuelPressure = this.FuelPressure();
-     this.FuelTank1 = this.FuelTank1();
-     this.Endurance = this.Endurance();
-     this.OilPressure = this.OilPressure();
-     this.OilTemperature = this.OilTemperature();
-     this.Volts = this.Volts();
-     this.AmpsAlternator = this.AmpsAlternator();
-     this.AmpsBattery = this.AmpsBattery();
+    //  this.rpm = this.rpm();
+    this.FuelFlow = this.FuelFlow();
+    //  this.FuelPressure = this.FuelPressure();
+    //  this.FuelTank1 = this.FuelTank1();
+    //  this.Endurance = this.Endurance();
+    //  this.OilPressure = this.OilPressure();
+    //  this.OilTemperature = this.OilTemperature();
+    //  this.Volts = this.Volts();
+    //  this.AmpsAlternator = this.AmpsAlternator();
+    //  this.AmpsBattery = this.AmpsBattery();
 
-     this.FlightClock = this.FlightClock();
+    //  this.FlightClock = this.FlightClock();
 
-     this.EGT1 = this.EGT1();
-     this.EGT2 = this.EGT2();
-     this.EGT3 = this.EGT3();
-     this.EGT4 = this.EGT4();
+    //  this.EGT1 = this.EGT1();
+    //  this.EGT2 = this.EGT2();
+    //  this.EGT3 = this.EGT3();
+    //  this.EGT4 = this.EGT4();
 
-     this.CHT1 = this.CHT1();
+    //  this.CHT1 = this.CHT1();
 //     this.CHT2 = this.CHT2();
 //     this.CHT3 = this.CHT3();
-     this.CHT4 = this.CHT4();
+    //  this.CHT4 = this.CHT4();
 
 
 // lines between EMS gages to make them more readabale
-svg.line(   0, 325, 479, 325).attr( {stroke:'#AAAAAA', 'stroke-width': '2'});  // horiz 0
-svg.line(   0, 417, 335, 417).attr( {stroke:'#AAAAAA', 'stroke-width': '2'});  // horiz 1
-svg.line(   190, 460, 479, 460).attr( {stroke:'#AAAAAA', 'stroke-width': '2'});  // horiz 2
-svg.line(   190, 529, 479, 529).attr( {stroke:'#AAAAAA', 'stroke-width': '2'});  // horiz 3
+// svg.line(   0, 325, 479, 325).attr( {stroke:'#AAAAAA', 'stroke-width': '2'});  // horiz 0
+// svg.line(   0, 417, 335, 417).attr( {stroke:'#AAAAAA', 'stroke-width': '2'});  // horiz 1
+// svg.line(   190, 460, 479, 460).attr( {stroke:'#AAAAAA', 'stroke-width': '2'});  // horiz 2
+// svg.line(   190, 529, 479, 529).attr( {stroke:'#AAAAAA', 'stroke-width': '2'});  // horiz 3
 
-svg.line( 190, 325, 190, 570).attr( {stroke:'#AAAAAA', 'stroke-width': '2'});  // vert 1
-svg.line( 335, 325, 335, 460).attr( {stroke:'#AAAAAA', 'stroke-width': '2'});  // vert 2
+// svg.line( 190, 325, 190, 570).attr( {stroke:'#AAAAAA', 'stroke-width': '2'});  // vert 1
+// svg.line( 335, 325, 335, 460).attr( {stroke:'#AAAAAA', 'stroke-width': '2'});  // vert 2
 
-// static text
-svg.text(322, 475, "EGT").attr({fill: '#ffffff', stroke: 'none', 'font-size': '12' });
-svg.text(322, 544, "CHT").attr({fill: '#ffffff', stroke: 'none', 'font-size': '12' });
+// // static text
+// svg.text(322, 475, "EGT").attr({fill: '#ffffff', stroke: 'none', 'font-size': '12' });
+// svg.text(322, 544, "CHT").attr({fill: '#ffffff', stroke: 'none', 'font-size': '12' });
 
 
    return 1;
@@ -942,8 +942,8 @@ svg.text(322, 544, "CHT").attr({fill: '#ffffff', stroke: 'none', 'font-size': '1
           x = s.FuelFlow.x;
           y = s.FuelFlow.y;
           BarSize = 120;
-          MaxFlow = 40;
-          YellowHigh = 35;
+          MaxFlow = 100;
+          YellowHigh = 95;
           YellowLow = 5;
 
           // normal fuel flow expected to be between 6 and 35 l/hr avaraging around 18 l/hr
@@ -951,7 +951,7 @@ svg.text(322, 544, "CHT").attr({fill: '#ffffff', stroke: 'none', 'font-size': '1
           svg.line( x+(YellowLow*BarSize/MaxFlow), y+12, x+(YellowHigh*BarSize/MaxFlow), y+12).attr( {stroke:'green', 'stroke-width': '12'});
           svg.line( x+(YellowHigh*BarSize/MaxFlow), y+12, x+BarSize, y+12).attr( {stroke:'yellow', 'stroke-width': '12'});
 
-          svg.text( x, y, "FUEL FLOW").attr({fill: '#ffffff', stroke: 'none', 'font-size': '12' });
+          svg.text( x, y, "FLAPS").attr({fill: '#ffffff', stroke: 'none', 'font-size': '12' });
    //       rpmBox = svg.text( 440, 390, v.rpm).attr( {fill: '#ffffff', stroke: 'none', 'font-size': '20'});
           FuelFlowBox = svg.text( x + BarSize-28, y, 0).attr( {fill: '#ffffff', stroke: 'none', 'font-size': '12', align: 'right'});
           this.FuelFlowNeedle = svg.rect( x, y+3, 6, 20).attr( {stroke:'#555555', 'stroke-width': '1', fill: '#FFFFFF'});

@@ -161,7 +161,7 @@ db.serialize(() => {
     if (err) {
       console.error(err.message);
     }
-//    console.log(row.Param_Text + "\t" + row.Param_Value);
+    //console.log(row.Param_Text + "\t" + row.Param_Value);
    switch (row.Param_Text) {
       case 'Airspeed':
 			if (Airspeed != row.Param_Value) {
@@ -236,11 +236,12 @@ db.serialize(() => {
       		socket.emit('FuelPressure', FuelPressure/1000 );
       }
             break;
-      case 'FuelFlow':
+      case 'Flaps':
+      //console.log(row)
       if (FuelFlow != row.Param_Value || d.getTime() - TS_FuelFlow > 12000) {
           TS_FuelFlow = d.getTime() - Math.floor(Math.random() * 5000);
       		FuelFlow = row.Param_Value;
-      		socket.emit('FuelFlow', FuelFlow/100 );
+      		socket.emit('Flaps', FuelFlow );
       }
       break;
 

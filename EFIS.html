@@ -45,118 +45,152 @@ var socket = io(); //load socket.io-client and connect to the host that serves t
 //});
 
 
-socket.on('Vario', function (data) {
-//  variometer.setVario(data);
-  Pi2D2.vertspeed(data);
-});
+// socket.on('Vario', function (data) {
+// //  variometer.setVario(data);
+//   Pi2D2.vertspeed(data);
+// });
 
-socket.on('Heading', function (data) {
-//  heading.setHeading(data);
-  Pi2D2.compass(data);
-});
+// socket.on('Heading', function (data) {
+// //  heading.setHeading(data);
+//   Pi2D2.compass(data);
+// });
 
-socket.on('Turn', function (data) {
-//  turn_coordinator.setTurn(data);
-  Pi2D2.turn(data);
-});
+// socket.on('Turn', function (data) {
+// //  turn_coordinator.setTurn(data);
+//   Pi2D2.turn(data);
+// });
 
-socket.on('QNH', function (data) {
-// altimeter.setPressure(data);
-  Pi2D2.altimeter(data);
-});
+// socket.on('QNH', function (data) {
+// // altimeter.setPressure(data);
+//   Pi2D2.altimeter(data);
+// });
 
-socket.on('Altitude', function (data) {
-// altimeter.setAltitude(data);
-   Pi2D2.altitude(data);
-});
+// socket.on('Altitude', function (data) {
+// // altimeter.setAltitude(data);
+//    Pi2D2.altitude(data);
+// });
 
 socket.on('Airspeed', function (data) {
 // airspeed.setAirSpeed(data);
    Pi2D2.speed(data);
 });
 
-socket.on('AH_Roll', function (data) {
-// attitude.setRoll(data);
-   Pi2D2.roll(data);
-});
+  socket.on('Flaps', function (data) {
+      Pi2D2.FuelFlow(data)
+  });
+  
+// socket.on('AH_Roll', function (data) {
+// // attitude.setRoll(data);
+//    Pi2D2.roll(data);
+// });
 
-socket.on('AH_Pitch', function (data) {
-// attitude.setPitch(data);
-   Pi2D2.pitch(data);
-});
+// socket.on('AH_Pitch', function (data) {
+// // attitude.setPitch(data);
+//    Pi2D2.pitch(data);
+// });
 
-socket.on('TachoRPM', function (data) {
-   Pi2D2.rpm(data);
-});
+// socket.on('TachoRPM', function (data) {
+//    Pi2D2.rpm(data);
+// });
 
-socket.on('FuelFlow', function (data) {
-   Pi2D2.FuelFlow(data);
-});
+// socket.on('FuelFlow', function (data) {
+//    Pi2D2.FuelFlow(data);
+// });
 
-socket.on('FuelPressure', function (data) {
-   Pi2D2.FuelPressure(data);
-});
+// socket.on('FuelPressure', function (data) {
+//    Pi2D2.FuelPressure(data);
+// });
 
-socket.on('FuelTank1', function (data) {
-   Pi2D2.FuelTank1(data);
-});
+// socket.on('FuelTank1', function (data) {
+//    Pi2D2.FuelTank1(data);
+// });
 
-socket.on('OilTemperature', function (data) {
-   Pi2D2.OilTemperature(data);
-});
+// socket.on('OilTemperature', function (data) {
+//    Pi2D2.OilTemperature(data);
+// });
 
-socket.on('OilPressure', function (data) {
-   Pi2D2.OilPressure(data);
-});
+// socket.on('OilPressure', function (data) {
+//    Pi2D2.OilPressure(data);
+// });
 
-socket.on('Volts', function (data) {
-   Pi2D2.Volts(data);
-});
+// socket.on('Volts', function (data) {
+//    Pi2D2.Volts(data);
+// });
 
-socket.on('AmpsAlternator', function (data) {
-   Pi2D2.AmpsAlternator(data);
-});
+// socket.on('AmpsAlternator', function (data) {
+//    Pi2D2.AmpsAlternator(data);
+// });
 
-socket.on('AmpsBattery', function (data) {
-   Pi2D2.AmpsBattery(data);
-});
+// socket.on('AmpsBattery', function (data) {
+//    Pi2D2.AmpsBattery(data);
+// });
 
-socket.on('TimeUTC', function (data) {
-   Pi2D2.FlightClock(data);
-});
+// socket.on('TimeUTC', function (data) {
+//    Pi2D2.FlightClock(data);
+// });
 
-socket.on('EGT1', function (data) {
-   Pi2D2.EGT1(data);
-});
+// socket.on('EGT1', function (data) {
+//    Pi2D2.EGT1(data);
+// });
 
-socket.on('EGT2', function (data) {
-   Pi2D2.EGT2(data);
-});
+// socket.on('EGT2', function (data) {
+//    Pi2D2.EGT2(data);
+// });
 
-socket.on('EGT3', function (data) {
-   Pi2D2.EGT3(data);
-});
+// socket.on('EGT3', function (data) {
+//    Pi2D2.EGT3(data);
+// });
 
-socket.on('EGT4', function (data) {
-   Pi2D2.EGT4(data);
-});
+// socket.on('EGT4', function (data) {
+//    Pi2D2.EGT4(data);
+// });
 
-socket.on('CHT1', function (data) {
-   Pi2D2.CHT1(data);
-});
+// socket.on('CHT1', function (data) {
+//    Pi2D2.CHT1(data);
+// });
 
-socket.on('CHT2', function (data) {
-   Pi2D2.CHT2(data);
-});
+// socket.on('CHT2', function (data) {
+//    Pi2D2.CHT2(data);
+// });
 
-socket.on('CHT3', function (data) {
-   Pi2D2.CHT3(data);
-});
+// socket.on('CHT3', function (data) {
+//    Pi2D2.CHT3(data);
+// });
 
-socket.on('CHT4', function (data) {
-   Pi2D2.CHT4(data);
-});
+// socket.on('CHT4', function (data) {
+//    Pi2D2.CHT4(data);
+// });
 
+
+
+
+var URL_HOST_BASE = window.location.hostname ;
+var URL_GPS_WS = "ws://" + URL_HOST_BASE + "/situation"
+socket2 = new WebSocket(URL_GPS_WS);
+
+socket2.onmessage = function (msg) {
+   const situation = JSON.parse(msg.data);
+   console.log(situation);
+   // {"GPSLastFixSinceMidnightUTC":0,"GPSLatitude":0,"GPSLongitude":0,"GPSFixQuality":0,"GPSHeightAboveEllipsoid":0,
+   // "GPSGeoidSep":0,"GPSSatellites":0,"GPSSatellitesTracked":0,"GPSSatellitesSeen":0,"GPSHorizontalAccuracy":999999,
+   // "GPSNACp":0,"GPSAltitudeMSL":0,"GPSVerticalAccuracy":999999,"GPSVerticalSpeed":0,"GPSLastFixLocalTime":"0001-01-01T00:00:00Z",
+   // "GPSTrueCourse":0,"GPSTurnRate":0,"GPSGroundSpeed":0,"GPSLastGroundTrackTime":"0001-01-01T00:00:00Z",
+   // "GPSTime":"0001-01-01T00:00:00Z","GPSLastGPSTimeStratuxTime":"0001-01-01T00:00:00Z","GPSLastValidNMEAMessageTime":"0001-01-01T00:00:00Z",
+   // "GPSLastValidNMEAMessage":"","GPSPositionSampleRate":0,
+   // "BaroTemperature":35.75,"BaroPressureAltitude":303.1044,"BaroVerticalSpeed":3.9185147,
+   // "BaroLastMeasurementTime":"0001-01-01T03:20:06.26Z","BaroSourceType":1,
+   // "AHRSPitch":0.6715788114308823,"AHRSRoll":-0.4949437285405806,"AHRSGyroHeading":3276.7,
+   // "AHRSMagHeading":3276.7,"AHRSSlipSkid":0.009294534255882683,"AHRSTurnRate":3276.7,
+   // "AHRSGLoad":0.999102425849236,"AHRSGLoadMin":0.9857756669747778,"AHRSGLoadMax":1.0064648804627252,
+   // "AHRSLastAttitudeTime":"0001-01-01T03:20:06.31Z","AHRSStatus":6}
+   
+   Pi2D2.roll(situation["AHRSRoll"]);
+   Pi2D2.pitch(situation["AHRSPitch"]);
+   // Pi2D2.slip(situation["AHRSSlipSkid"]);
+
+   Pi2D2.altitude(situation["BaroPressureAltitude"]);
+   // Pi2D2.vertspeed(situation["BaroVerticalSpeed"]);
+};
 
 </script>
 
