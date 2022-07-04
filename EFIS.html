@@ -33,139 +33,32 @@
 <script src="js/Pi2D2.js"></script>
 <script src="js/socket.io.js"></script> <!-- include socket.io client side script. was src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.3/socket.io.js" -->
 <script>
-var socket = io(); //load socket.io-client and connect to the host that serves the page
-
-
-// stuff to send events from the screen to the client
-//window.addEventListener("load", function(){ //when page loads
-//  var lightbox = document.getElementById("light");
-//  lightbox.addEventListener("change", function() { //add event listener for when checkbox changes
-//    socket.emit("light", Number(this.checked)); //send button status to server (as 1 or 0)
-//  });
-//});
-
-
-// socket.on('Vario', function (data) {
-// //  variometer.setVario(data);
-//   Pi2D2.vertspeed(data);
-// });
-
-// socket.on('Heading', function (data) {
-// //  heading.setHeading(data);
-//   Pi2D2.compass(data);
-// });
-
-// socket.on('Turn', function (data) {
-// //  turn_coordinator.setTurn(data);
-//   Pi2D2.turn(data);
-// });
-
-// socket.on('QNH', function (data) {
-// // altimeter.setPressure(data);
-//   Pi2D2.altimeter(data);
-// });
-
-// socket.on('Altitude', function (data) {
-// // altimeter.setAltitude(data);
-//    Pi2D2.altitude(data);
-// });
-
-socket.on('Airspeed', function (data) {
-// airspeed.setAirSpeed(data);
-   Pi2D2.speed(data);
-});
-
-  socket.on('Flaps', function (data) {
-      Pi2D2.FuelFlow(data)
-  });
-  
-// socket.on('AH_Roll', function (data) {
-// // attitude.setRoll(data);
-//    Pi2D2.roll(data);
-// });
-
-// socket.on('AH_Pitch', function (data) {
-// // attitude.setPitch(data);
-//    Pi2D2.pitch(data);
-// });
-
-// socket.on('TachoRPM', function (data) {
-//    Pi2D2.rpm(data);
-// });
-
-// socket.on('FuelFlow', function (data) {
-//    Pi2D2.FuelFlow(data);
-// });
-
-// socket.on('FuelPressure', function (data) {
-//    Pi2D2.FuelPressure(data);
-// });
-
-// socket.on('FuelTank1', function (data) {
-//    Pi2D2.FuelTank1(data);
-// });
-
-// socket.on('OilTemperature', function (data) {
-//    Pi2D2.OilTemperature(data);
-// });
-
-// socket.on('OilPressure', function (data) {
-//    Pi2D2.OilPressure(data);
-// });
-
-// socket.on('Volts', function (data) {
-//    Pi2D2.Volts(data);
-// });
-
-// socket.on('AmpsAlternator', function (data) {
-//    Pi2D2.AmpsAlternator(data);
-// });
-
-// socket.on('AmpsBattery', function (data) {
-//    Pi2D2.AmpsBattery(data);
-// });
-
-// socket.on('TimeUTC', function (data) {
-//    Pi2D2.FlightClock(data);
-// });
-
-// socket.on('EGT1', function (data) {
-//    Pi2D2.EGT1(data);
-// });
-
-// socket.on('EGT2', function (data) {
-//    Pi2D2.EGT2(data);
-// });
-
-// socket.on('EGT3', function (data) {
-//    Pi2D2.EGT3(data);
-// });
-
-// socket.on('EGT4', function (data) {
-//    Pi2D2.EGT4(data);
-// });
-
-// socket.on('CHT1', function (data) {
-//    Pi2D2.CHT1(data);
-// });
-
-// socket.on('CHT2', function (data) {
-//    Pi2D2.CHT2(data);
-// });
-
-// socket.on('CHT3', function (data) {
-//    Pi2D2.CHT3(data);
-// });
-
-// socket.on('CHT4', function (data) {
-//    Pi2D2.CHT4(data);
-// });
-
-
 
 
 var URL_HOST_BASE = window.location.hostname ;
 var URL_GPS_WS = "ws://" + URL_HOST_BASE + "/situation"
+var URL_CAN_WS = "ws://" + URL_HOST_BASE + "/candata"
+
+can_socket = new WebSocket(URL_CAN_WS);
+
+can_socket.onopen = function (msg) {
+};
+
+can_socket.onclose = function (msg) {
+};
+
+can_socket.onerror = function (msg) {
+};
+
+can_socket.onmessage = function (msg) {
+  candata = JSON.parse(msg.data);
+
+  Pi2D2.speed(candata.IASValueKts.toFixed(0));
+  Pi2D2.FuelFlow(candata.FlapsValuePct);
+};
+
+
+
 socket2 = new WebSocket(URL_GPS_WS);
 
 socket2.onmessage = function (msg) {
@@ -189,7 +82,7 @@ socket2.onmessage = function (msg) {
    // Pi2D2.slip(situation["AHRSSlipSkid"]);
 
    Pi2D2.altitude(situation["BaroPressureAltitude"]);
-   // Pi2D2.vertspeed(situation["BaroVerticalSpeed"]);
+   Pi2D2.vertspeed(situation["BaroVerticalSpeed"]);
 };
 
 </script>
