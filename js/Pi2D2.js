@@ -41,7 +41,7 @@ var Pi2D2 =  {
       vertspeed: {x: 430, y: 160 },
 //**********  EMS Stuff **********************************************************
       rpm: {x: 20, y: 410, r: 70}, // x,y - position, r - radius of the round gauge, s - width of the line
-      FuelFlow: {x: 55, y:280 },
+      FuelFlow: {x: 55, y:580 },
       FuelPressure: {x: 55, y: 545 },
       FuelTank1: {x: 0, y: 560, BarSize: 120 },
       OilPressure: {x: 200, y: 345 },
@@ -55,8 +55,8 @@ var Pi2D2 =  {
       EGT3: {x: 230, y: 512 },
       EGT4: {x: 340, y: 512 },
       CHT1: {x: 230, y: 560 },
-//      CHT2: {x: 340, y: 540 },
-//      CHT3: {x: 230, y: 560 },
+     CHT2: {x: 340, y: 540 },
+     CHT3: {x: 230, y: 560 },
       CHT4: {x: 340, y: 560 },
 
    },
@@ -121,37 +121,37 @@ var Pi2D2 =  {
       // this.headingBug = this.headingBug();
       this.speed = this.speed();
       this.altitude = this.altitude();
-      this.altimeter = this.altimeter();
+      this.altimeter = this.altimeter();  // QNH display
 //      this.gmeter = this.gmeter();
-      // this.vertspeed = this.vertspeed();
-//      this.cdi = this.cdi();
-//      this.glideslope = this.glideslope();
-//      this.altitudeBug = this.altitudeBug();
+      this.vertspeed = this.vertspeed();
+    //  this.cdi = this.cdi();
+    //  this.glideslope = this.glideslope();
+    //  this.altitudeBug = this.altitudeBug();
 //      this.slip = this.slipIndicator();
       // this.turn = this.turnIndicator();
 
 // hide the bottom part of the compass and create blan fiels for EMS gauges
-    //  svg.rect(0, s.screen.y ,s.screen.x, s.screen.y).attr( {fill: '#000000'});
+     svg.rect(0, s.screen.y ,s.screen.x, s.screen.y).attr( {fill: '#000000'});
 
-    //  this.rpm = this.rpm();
+     this.rpm = this.rpm();
     this.FuelFlow = this.FuelFlow();
     //  this.FuelPressure = this.FuelPressure();
     //  this.FuelTank1 = this.FuelTank1();
     //  this.Endurance = this.Endurance();
     //  this.OilPressure = this.OilPressure();
-    //  this.OilTemperature = this.OilTemperature();
+     this.OilTemperature = this.OilTemperature();
     //  this.Volts = this.Volts();
     //  this.AmpsAlternator = this.AmpsAlternator();
     //  this.AmpsBattery = this.AmpsBattery();
 
     //  this.FlightClock = this.FlightClock();
 
-    //  this.EGT1 = this.EGT1();
+     this.EGT1 = this.EGT1();
     //  this.EGT2 = this.EGT2();
     //  this.EGT3 = this.EGT3();
     //  this.EGT4 = this.EGT4();
 
-    //  this.CHT1 = this.CHT1();
+     this.CHT1 = this.CHT1();
 //     this.CHT2 = this.CHT2();
 //     this.CHT3 = this.CHT3();
     //  this.CHT4 = this.CHT4();
